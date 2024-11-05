@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
-    <title>학생 정보 출력</title>
+    <title>Watch 팀 정보</title>
     <style>
         .container {
             display: flex;
@@ -17,11 +17,21 @@
             padding: 15px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            width: 200px;
+            width: 300px;
             text-align: center;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
-        h1, h3, h5 {
+        .student-block img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .separator {
+            margin: 15px 0;
+            height: 1px;
+            background-color: #ddd;
+        }
+        h1, h2, h3, h5 {
             text-align: center;
         }
     </style>
@@ -38,12 +48,50 @@
     </script>
 </head>
 <body>
-    <h1>학생 정보 출력</h1>
+    <h1>Watch 팀 정보</h1>
+    <h2>Watch 팀은 창의적인 디자인과 효율적인 시스템을 통해 최고의 결과를 목표로 하고 있습니다.</h2>
+    
     <div class="container">
         <div class="student-block">
-            <p><strong>이름:</strong> </p>
-            <p><strong>학번:</strong> </p>
+            <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
+            <div class="separator"></div>
+            <p><strong>이름:</strong> 정선열</p>
+            <p><strong>학번:</strong> 2020110481</p>
+            <p><strong>역할:</strong> 팀장</p>
+            <p><strong>학과:</strong> 통계학과</p>
+            <p><strong>전화번호:</strong> </p>
+            <p><strong>이메일:</strong> </p>
         </div>        
+        <div class="student-block">
+            <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
+            <div class="separator"></div>
+            <p><strong>이름:</strong> 김승현</p>
+            <p><strong>학번:</strong> 2020112510</p>
+            <p><strong>역할:</strong> input, result 창</p>
+            <p><strong>학과:</strong> 산업시스템공학과</p>
+            <p><strong>전화번호:</strong> </p>
+            <p><strong>이메일:</strong> </p>
+        </div>
+        <div class="student-block">
+            <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
+            <div class="separator"></div>
+            <p><strong>이름:</strong> 김태경</p>
+            <p><strong>학번:</strong> 2021112387</p>
+            <p><strong>역할:</strong> 디자인</p>
+            <p><strong>학과:</strong> 산업시스템공학과</p>
+            <p><strong>전화번호:</strong> </p>
+            <p><strong>이메일:</strong> </p>
+        </div>
+        <div class="student-block">
+            <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
+            <div class="separator"></div>
+            <p><strong>이름:</strong> 양윤규</p>
+            <p><strong>학번:</strong> 2020110477</p>
+            <p><strong>역할:</strong> index page</p>
+            <p><strong>학과:</strong> 통계학과</p>
+            <p><strong>전화번호:</strong> </p>
+            <p><strong>이메일:</strong> </p>
+        </div>
     </div>
     <h3> 팀 구성원 정보 입력 페이지 <button onclick="openInputPage()"> 이동 </button> </h3>
     <footer>
