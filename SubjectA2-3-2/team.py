@@ -17,15 +17,27 @@ def input():
 @app.route('/result', methods=['POST'])
 def result():
     # 각 학생의 이름과 학번 데이터를 리스트로 받음
-   names = request.form.getlist('name[]')
+   names = request.form.getlist('Name[]')
    student_numbers = request.form.getlist('StudentNumber[]')
+   genders = [request.form.get(f'Gender[{i}]') for i in range(len(names))]
+   majors = request.form.getlist('Major[]')
+   languages = [', '.join(request.form.getlist(f'language[{i}][]')) for i in range(len(names))]
 
-    # 데이터를 템플릿으로 전달하여 출력 페이지 생성
-   return render_template('result_a.html', students=zip(names, student_numbers))
+
+   # 데이터 확인을 위해 print 문 추가
+   print("Names:", names)
+   print("Student Numbers:", student_numbers)
+   print("Genders:", genders)
+   print("Majors:", majors)
+   print("Languages:", languages)
+
+   # 데이터를 템플릿으로 전달하여 출력 페이지 생성
+   return render_template('result_contact.html', result=zip(names, student_numbers, genders, majors, languages))
 
 @app.route('/contact')
 def contact_info():
    return render_template('contact.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
