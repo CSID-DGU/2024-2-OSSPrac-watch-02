@@ -15,7 +15,7 @@ def result():
        result['Gender']=request.form.get('Gender')
        result['Major']=request.form.get('Major')
        result['languages'] = request.form.getlist('languages')
-       result['languages'] =  ','.join(result['languages'])
+       result['languages'] =  ', '.join(result['languages'])
        return render_template('result.html',result=result)
 
 if __name__ =='__main__':
