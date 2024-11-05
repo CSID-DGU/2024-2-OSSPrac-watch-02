@@ -24,15 +24,19 @@ def result():
    languages = [', '.join(request.form.getlist(f'language[{i}][]')) for i in range(len(names))]
 
 
-   # 데이터 확인을 위해 print 문 추가
-   print("Names:", names)
-   print("Student Numbers:", student_numbers)
-   print("Genders:", genders)
-   print("Majors:", majors)
-   print("Languages:", languages)
-
+   # zip 객체를 리스트로 변환하여 템플릿에 전달
+   zipped_result = list(zip(names, student_numbers, genders, majors, languages))
+   
+   #  # 디버깅용입니다 ㅎ
+   # print("Names:", names)
+   # print("Student Numbers:", student_numbers)
+   # print("Genders:", genders)
+   # print("Majors:", majors)
+   # print("Languages:", languages)
+   # print("Zipped Result:", zipped_result)
+   
    # 데이터를 템플릿으로 전달하여 출력 페이지 생성
-   return render_template('result_contact.html', result=zip(names, student_numbers, genders, majors, languages))
+   return render_template('result_contact.html', result=zipped_result)
 
 @app.route('/contact')
 def contact_info():
