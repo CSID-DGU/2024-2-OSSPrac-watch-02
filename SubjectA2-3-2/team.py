@@ -38,6 +38,9 @@ def result():
 def contact_info():
    return render_template('contact.html')
 
+@app.route('/image')
+def image_page():
+    return render_template('team_image.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
