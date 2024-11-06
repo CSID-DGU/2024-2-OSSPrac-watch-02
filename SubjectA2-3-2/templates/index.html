@@ -20,6 +20,9 @@
             width: 300px;
             text-align: center;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: max-height 0.5s ease-out;
+            overflow: hidden;
         }
         .student-block img {
             width: 100%;
@@ -30,6 +33,15 @@
             margin: 15px 0;
             height: 1px;
             background-color: #ddd;
+        }
+        .introduction {
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+        }
+        .introduction.show {
+            max-height: 200px; /* Adjust as needed */
+            opacity: 1;
         }
         h1, h2, h3, h5 {
             text-align: center;
@@ -45,6 +57,10 @@
         function openInputPage() {
             window.open("/input", "InputPage", "width=800,height=600");
         }
+        function toggleIntroduction(id) {
+            var intro = document.getElementById(id);
+            intro.classList.toggle('show');
+        }
     </script>
 </head>
 <body>
@@ -52,7 +68,7 @@
     <h2>Watch 팀은 창의적인 디자인과 효율적인 시스템을 통해 최고의 결과를 목표로 하고 있습니다.</h2>
     
     <div class="container">
-        <div class="student-block">
+        <div class="student-block" onclick="toggleIntroduction('intro1')">
             <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
             <div class="separator"></div>
             <p><strong>이름:</strong> 정선열</p>
@@ -62,8 +78,11 @@
             <p><strong>전화번호:</strong> </p>
             <p><strong>이메일:</strong> </p>
             <p><strong>GitHub:</strong> <a href="https://github.com/Seonyeol-Jeong" target="_blank">github.com/Seonyeol-Jeong</a></p>
+            <div id="intro1" class="introduction">
+                <p>안녕하세요, 저는 정선열입니다. 팀장으로서 팀을 이끌고 있습니다.</p>
+            </div>
         </div>        
-        <div class="student-block">
+        <div class="student-block" onclick="toggleIntroduction('intro2')">
             <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
             <div class="separator"></div>
             <p><strong>이름:</strong> 김승현</p>
@@ -73,8 +92,11 @@
             <p><strong>전화번호:</strong> </p>
             <p><strong>이메일:</strong> </p>
             <p><strong>GitHub:</strong> <a href="https://github.com/KSH3880" target="_blank">github.com/KSH3880</a></p>
+            <div id="intro2" class="introduction">
+                <p>안녕하세요, 저는 김승현입니다. input과 result 창을 담당하고 있습니다.</p>
+            </div>
         </div>
-        <div class="student-block">
+        <div class="student-block" onclick="toggleIntroduction('intro3')">
             <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
             <div class="separator"></div>
             <p><strong>이름:</strong> 김태경</p>
@@ -84,8 +106,11 @@
             <p><strong>전화번호:</strong> </p>
             <p><strong>이메일:</strong> </p>
             <p><strong>GitHub:</strong> <a href="https://github.com/taekyungss" target="_blank">github.com/taekyungss</a></p>
+            <div id="intro3" class="introduction">
+                <p>안녕하세요, 저는 김태경입니다. 디자인을 담당하고 있습니다.</p>
+            </div>
         </div>
-        <div class="student-block">
+        <div class="student-block" onclick="toggleIntroduction('intro4')">
             <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
             <div class="separator"></div>
             <p><strong>이름:</strong> 양윤규</p>
@@ -95,6 +120,9 @@
             <p><strong>전화번호:</strong> </p>
             <p><strong>이메일:</strong> </p>
             <p><strong>GitHub:</strong> <a href="https://github.com/Yungyu-Yang" target="_blank">github.com/Yungyu-Yang</a></p>
+            <div id="intro4" class="introduction">
+                <p>안녕하세요, 저는 양윤규입니다. index 페이지를 담당하고 있습니다.</p>
+            </div>
         </div>
     </div>
     <h3> 팀 구성원 정보 입력 페이지 <button onclick="openInputPage()"> 이동 </button> </h3>
