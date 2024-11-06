@@ -1,42 +1,67 @@
-<!-- <!doctype html>
-<html>
-   <body>
-      <table border="1"> 
-        <caption><b>학생 info</b></caption>
-        <tr>
-           <th>이름</th>
-           <th>학번</th>
-           <th>성별</th>
-           <th>전공</th>
-           <th>프로그래밍 언어</th>
-        </tr>
-        {% for names, student_numbers, genders, majors, languages in result %}
-            <tr>
-               <td>{{ names }}</td>
-               <td>{{ student_numbers }}</td>
-               <td>{{ genders }}</td>
-               <td>{{ majors }}</td>
-               <td>{{ languages }}</td>
-            </tr>
-        {% endfor %}
-      </table> 
-   </body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
     <title>팀 구성원 정보 출력</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        /* h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #333;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        } */
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem; /* 적당한 크기 */
+            color: #004aad; /* 세련된 파란색 */
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        /* 하단에 세련된 파란색 밑줄 추가 */
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #0078d4;
+            margin: 10px auto 0;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        /* 마우스 오버 시 밑줄 확장 */
+        h1:hover::after {
+            width: 100px;
+        }
+
         .container {
             display: flex;
             justify-content: center;
             gap: 20px;
             padding: 20px;
+            overflow-x: auto;
+            flex-wrap: nowrap;
         }
-        .student-block {
+        /* .student-block {
             background-color: #f9f9f9;
             padding: 15px;
             border: 1px solid #ccc;
@@ -44,25 +69,58 @@
             width: 200px;
             text-align: center;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
+        } */
+        
+
+        .student-block {
+            background: linear-gradient(145deg, #0078d4, #005a9e);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            width: 160px;
             text-align: center;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        /* hover 효과 */
+        .student-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .student-block img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        /* .separator {
+            margin: 15px 0;
+            height: 1px;
+            background-color: #ddd;
+        } */
+        /* h1 {
+            text-align: center;
+        } */
+        /* hover 시 밑줄 애니메이션 */
+        .student-block:hover .student-name::after {
+            width: 80%;
         }
     </style>
 </head>
 <body>
    <h1>학생 정보</h1>
-    <div class="container">
-        {% for names, student_numbers, genders, majors, languages in result %}
-            <div class="student-block">
-                <p><strong>이름:</strong> {{ names }}</p>
-                <p><strong>학번:</strong> {{ student_numbers }}</p>
-                <p><strong>성별:</strong> {{ genders }}</p>
-                <p><strong>전공:</strong> {{ majors }}</p>
-                <p><strong>프로그래밍 언어:</strong> {{ languages }}</p>
-            </div>
-        {% endfor %}
-    </div>
-   </div>
+   <div class="container">
+    {% for name, student_number, gender, major, language in result %}
+        <div class="student-block">
+            <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
+            <p><strong>이름:</strong> {{ name }}</p>
+            <p><strong>학번:</strong> {{ student_number }}</p>
+            <p><strong>성별:</strong> {{ gender }}</p>
+            <p><strong>전공:</strong> {{ major }}</p>
+            <p><strong>프로그래밍 언어:</strong> {{ language }}</p>
+        </div>
+    {% endfor %}
+</div>
 </body>
 </html>
