@@ -1,28 +1,3 @@
-<!-- <!doctype html>
-<html>
-   <body>
-      <table border="1"> 
-        <caption><b>학생 info</b></caption>
-        <tr>
-           <th>이름</th>
-           <th>학번</th>
-           <th>성별</th>
-           <th>전공</th>
-           <th>프로그래밍 언어</th>
-        </tr>
-        {% for names, student_numbers, genders, majors, languages in result %}
-            <tr>
-               <td>{{ names }}</td>
-               <td>{{ student_numbers }}</td>
-               <td>{{ genders }}</td>
-               <td>{{ majors }}</td>
-               <td>{{ languages }}</td>
-            </tr>
-        {% endfor %}
-      </table> 
-   </body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -52,17 +27,17 @@
 </head>
 <body>
    <h1>학생 정보</h1>
-    <div class="container">
-        {% for names, student_numbers, genders, majors, languages in result %}
-            <div class="student-block">
-                <p><strong>이름:</strong> {{ names }}</p>
-                <p><strong>학번:</strong> {{ student_numbers }}</p>
-                <p><strong>성별:</strong> {{ genders }}</p>
-                <p><strong>전공:</strong> {{ majors }}</p>
-                <p><strong>프로그래밍 언어:</strong> {{ languages }}</p>
-            </div>
-        {% endfor %}
-    </div>
-   </div>
+   <div class="container">
+    {% for name, student_number, gender, major, language in result %}
+        <div class="student-block">
+            <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
+            <p><strong>이름:</strong> {{ name }}</p>
+            <p><strong>학번:</strong> {{ student_number }}</p>
+            <p><strong>성별:</strong> {{ gender }}</p>
+            <p><strong>전공:</strong> {{ major }}</p>
+            <p><strong>프로그래밍 언어:</strong> {{ language }}</p>
+        </div>
+    {% endfor %}
+</div>
 </body>
 </html>
