@@ -6,9 +6,30 @@
     <title>Watch 팀 정보</title>
     <link href="https://fonts.googleapis.com/css2?family=JejuGothic&display=swap" rel="stylesheet">
     <style>
+        /* 기본 페이지 스타일 */
         body {
             font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
         }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: #004aad;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        /* 학생 정보 카드 스타일 */
         .container {
             display: flex;
             justify-content: center;
@@ -17,6 +38,7 @@
             overflow-x: auto;
             scroll-snap-type: x mandatory;
         }
+
         .student-block {
             background-color: #f9f9f9;
             padding: 15px;
@@ -28,114 +50,61 @@
             cursor: pointer;
             transition: max-height 0.5s ease-out;
             overflow: hidden;
-            scroll-snap-align: start; /* Aligns the start of the element with the snap position */
+            scroll-snap-align: start;
         }
+
         .student-block img {
             width: 100%;
             height: auto;
             border-radius: 50%;
         }
-        .separator {
-            margin: 15px 0;
-            height: 1px;
-            background-color: #ddd;
+        .student-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
         }
-        .introduction {
-            max-height: 0;
-            opacity: 0;
-            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+        /* hover 시 밑줄 애니메이션 */
+        .student-block:hover .student-name::after {
+            width: 80%;
         }
-        .introduction.show {
-            max-height: 200px; /* Adjust as needed */
-            opacity: 1;
-        }
-        h1, h2, h3, h5 {
+
+        /* 안내 부분 스타일 */
+        footer {
+            margin-top: 20px;
             text-align: center;
-        }
-        h1 {
-            font-family: 'JejuGothic', sans-serif;
         }
     </style>
     <script>
-        function openContactPage() {
-            window.open("https://github.com/CSID-DGU/2024-2-OSSPrac-watch-02.git", "contactPage", "width=1800,height=1200");
-        }
         function openInputPage() {
-            window.open("/input", "InputPage", "width=800,height=600");
-        }
-        function toggleIntroduction(id) {
-            var intro = document.getElementById(id);
-            intro.classList.toggle('show');
+            window.location.href = "/input";
         }
     </script>
 </head>
 <body>
-    <h1>Team Watch 입니다. </h1>
+    <h1>Team Watch 입니다.</h1>
     <h2>Watch 팀은 창의적인 디자인과 효율적인 시스템을 통해 최고의 결과를 목표로 하고 있습니다.</h2>
-    
-    <div class="container">
-        <div class="student-block" onclick="toggleIntroduction('intro1')">
-            <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
-            <div class="separator"></div>
-            <p><strong>이름:</strong> 정선열</p>
-            <p><strong>학번:</strong> 2020110481</p>
-            <p><strong>역할:</strong> 팀장</p>
-            <p><strong>학과:</strong> 통계학과</p>
-            <p><strong>전화번호:</strong> </p>
-            <p><strong>이메일:</strong> </p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/Seonyeol-Jeong" target="_blank">github.com/Seonyeol-Jeong</a></p>
-            <div id="intro1" class="introduction">
-                <p>안녕하세요, 저는 정선열입니다. 팀장으로서 팀을 이끌고 있습니다.</p>
-            </div>
-        </div>        
-        <div class="student-block" onclick="toggleIntroduction('intro2')">
-            <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
-            <div class="separator"></div>
-            <p><strong>이름:</strong> 김승현</p>
-            <p><strong>학번:</strong> 2020112510</p>
-            <p><strong>역할:</strong> input, result 창</p>
-            <p><strong>학과:</strong> 산업시스템공학과</p>
-            <p><strong>전화번호:</strong> </p>
-            <p><strong>이메일:</strong> </p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/KSH3880" target="_blank">github.com/KSH3880</a></p>
-            <div id="intro2" class="introduction">
-                <p>안녕하세요, 저는 김승현입니다. input과 result 창을 담당하고 있습니다.</p>
-            </div>
-        </div>
-        <div class="student-block" onclick="toggleIntroduction('intro3')">
-            <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
-            <div class="separator"></div>
-            <p><strong>이름:</strong> 김태경</p>
-            <p><strong>학번:</strong> 2021112387</p>
-            <p><strong>역할:</strong> 디자인</p>
-            <p><strong>학과:</strong> 산업시스템공학과</p>
-            <p><strong>전화번호:</strong> </p>
-            <p><strong>이메일:</strong> </p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/taekyungss" target="_blank">github.com/taekyungss</a></p>
-            <div id="intro3" class="introduction">
-                <p>안녕하세요, 저는 김태경입니다. 디자인을 담당하고 있습니다.</p>
-            </div>
-        </div>
-        <div class="student-block" onclick="toggleIntroduction('intro4')">
-            <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
-            <div class="separator"></div>
-            <p><strong>이름:</strong> 양윤규</p>
-            <p><strong>학번:</strong> 2020110477</p>
-            <p><strong>역할:</strong> index page</p>
-            <p><strong>학과:</strong> 통계학과</p>
-            <p><strong>전화번호:</strong> </p>
-            <p><strong>이메일:</strong> </p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/Yungyu-Yang" target="_blank">github.com/Yungyu-Yang</a></p>
-            <div id="intro4" class="introduction">
-                <p>안녕하세요, 저는 양윤규입니다. index 페이지를 담당하고 있습니다.</p>
-            </div>
-        </div>
-    </div>
     <h3> 팀 구성원 정보 입력 페이지 <button onclick="openInputPage()"> 이동 </button> </h3>
+
+    {% if result %}
+    <div class="container">
+        {% for name, student_number, gender, major, language in result %}
+            <div class="student-block">
+                <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
+                <p><strong>이름:</strong> {{ name }}</p>
+                <p><strong>학번:</strong> {{ student_number }}</p>
+                <p><strong>성별:</strong> {{ gender }}</p>
+                <p><strong>전공:</strong> {{ major }}</p>
+                <p><strong>프로그래밍 언어:</strong> {{ language }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- 안내 부분 -->
     <footer>
         <h5>📞 안내: 
-            <button onclick="openContactPage()"> 팀 Github 바로가기</button>  
-            <button onclick="window.location.href='/image'">팀 Github QR</button> </h5>
+            <button onclick="window.open('https://github.com/CSID-DGU/2024-2-OSSPrac-watch-02.git', 'contactPage', 'width=1800,height=1200')">팀 Github 바로가기</button>  
+            <button onclick="window.location.href='/image'">팀 Github QR</button>
+        </h5>
     </footer>
 </body>
 </html>
