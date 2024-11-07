@@ -25,11 +25,8 @@
         }
     </style>
     <script>
-        function showContactInfo() {
-            alert("긴급전화: 010-1234-5678");
-        }
         function openContactPage() {
-            window.open("/contact", "contactPage", "width=600,height=400");
+            window.open("https://github.com/CSID-DGU/2024-2-OSSPrac-watch-02.git", "contactPage", "width=600,height=400");
         }
     </script>
 </head>
@@ -44,8 +41,9 @@
         {% endfor %}
     </div>
     <footer>
-        <h5>📞 안내: <button onclick="showContactInfo()"> 팀 긴급연락</button> 
-            <button onclick="openContactPage()"> 팀 연락정보</button> </h5>
+        <h5>📞 안내: 
+            <button onclick="openContactPage()"> 팀 Github 바로가기</button>  
+            <button onclick="window.location.href='/image'">팀 Github QR</button> </h5>
     </footer> 
 </body>
 </html>
