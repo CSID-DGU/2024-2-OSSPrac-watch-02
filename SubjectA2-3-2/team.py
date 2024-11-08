@@ -5,6 +5,7 @@ app.secret_key = 'your_secret_key'  # 세션 사용을 위해 필요
 
 @app.route('/')
 def index():
+    session.pop('result', None)
     result = session.get('result', [])  # 세션에서 결과 데이터 가져오기
     return render_template('index.html', result=result)
 
@@ -22,9 +23,13 @@ def result():
     genders = [request.form.get(f'Gender[{i}]') for i in range(len(names))]
     majors = request.form.getlist('Major[]')
     languages = [', '.join(request.form.getlist(f'language[{i}][]')) for i in range(len(names))]
+    emails = [f"{email}@{domain}" for email, domain in zip(request.form.getlist('Email[]'), request.form.getlist('EmailDomain[]'))]
+    phones = request.form.getlist('Phone[]')
+
+    
 
     # zip 객체를 리스트로 변환하여 템플릿에 전달
-    zipped_result = list(zip(names, student_numbers, genders, majors, languages))
+    zipped_result = list(zip(names, student_numbers, genders, majors, languages, emails, phones))
     session['result'] = zipped_result
     
     # index.html로 데이터를 전달하여 메인 페이지에서 결과 출력
