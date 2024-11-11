@@ -23,13 +23,24 @@ def result():
     genders = [request.form.get(f'Gender[{i}]') for i in range(len(names))]
     majors = request.form.getlist('Major[]')
     languages = [', '.join(request.form.getlist(f'language[{i}][]')) for i in range(len(names))]
+    pictures = [request.form.get(f'Picture[{i}]', '') for i in range(len(names))]
+
+    # 사진 파일 경로 설정
+    picture_paths = {
+        'Picture1': "https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member1.png",
+        'Picture2': "https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member2.png",
+        'Picture3': "https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member3.png",
+        'Picture4': "https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member4.png"
+    }
+    
+    # 각 학생의 선택된 사진 경로로 변환
+    selected_pictures = [picture_paths.get(picture, picture_paths['Picture1']) for picture in pictures] 
+
     emails = [f"{email}@{domain}" for email, domain in zip(request.form.getlist('Email[]'), request.form.getlist('EmailDomain[]'))]
     phones = request.form.getlist('Phone[]')
 
-    
 
-    # zip 객체를 리스트로 변환하여 템플릿에 전달
-    zipped_result = list(zip(names, student_numbers, genders, majors, languages, emails, phones))
+    zipped_result = list(zip(names, student_numbers, genders, majors, languages, emails, phones, selected_pictures))
     session['result'] = zipped_result
     
     # index.html로 데이터를 전달하여 메인 페이지에서 결과 출력
