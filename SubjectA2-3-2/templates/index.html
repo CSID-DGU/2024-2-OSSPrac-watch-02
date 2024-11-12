@@ -9,7 +9,7 @@
     <style>
         :root {
             --accent-color: #f0f4f5;
-            --text-color: #f0f4f5;
+            --text-color:  #000;
             --background-color: #3a3a61;
         }
 
@@ -76,14 +76,16 @@
             padding: 8px 12px;
         }
 
-        .nav_menu li:hover {
-            color: var(--background-color);
-            background-color: var(--accent-color);
-            border-radius: 4px;
+        .nav_menu li a {
+            color: #ffffff; /* 하얀색 텍스트 */
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
         }
 
         .nav_menu li a:hover {
-            color: var(--background-color);
+            color: var(--accent-color);
         }
 
         .nav_icons {
@@ -219,8 +221,8 @@
             <i class="fas fa-house"></i> <span>Team Watch</span>
         </div>
         <ul class="nav_menu">
-            <li><a href="#" onclick="openInputPage()">팀 구성원 정보 입력 페이지 이동</a></li>
-            <li><a href="#" onclick="openGithubPage()">Github 페이지 바로가기</a></li>
+            <li><a href="#" onclick="openInputPage()">팀 구성원 정보 입력</a></li>
+            <li><a href="#" onclick="openGithubPage()">Github 페이지</a></li>
             <li><a href="#" onclick="openGithubQR()">팀 Github QR</a></li>
         </ul>
         <div class="navbar_toggleBtn">
@@ -229,8 +231,13 @@
     </div>
 
     <div class="content">
-        <h1>Team Watch</h1>
-        <h2>Team Watch는 통계학과 학생 두명, 산업시스템공학과 학생 두명으로 구성되어 있습니다. </h2>
+        <h1>
+            Team Watch
+            <a href="{{ url_for('static', filename='watch_icon.png') }}" title="손목 시계 아이콘">
+                <img src="{{ url_for('static', filename='watch_icon.png') }}" alt="손목 시계 아이콘" style="width: 40px; height: 40px; margin-left: 5px; margin-top: 1px;">
+            </a>
+        </h1>
+        <h2>Team Watch는 함께 지켜보고 피드백하며 성장하는 팀이라는 의미를 담고 있습니다.</h2>
         <h3> 팀 구성원 정보 입력 페이지 <button onclick="openInputPage()"> 이동 </button> </h3>
 
         {% if result %}

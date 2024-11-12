@@ -16,15 +16,7 @@
             min-height: 100vh;
             margin: 0;
         }
-        /* h1 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2rem;
-            color: #333;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        } */
+    
         h1 {
             text-align: center;
             margin-bottom: 30px;
@@ -35,7 +27,7 @@
             text-transform: uppercase;
             position: relative;
         }
-
+    
         /* 하단에 세련된 파란색 밑줄 추가 */
         h1::after {
             content: '';
@@ -47,12 +39,12 @@
             border-radius: 2px;
             transition: width 0.3s ease;
         }
-
+    
         /* 마우스 오버 시 밑줄 확장 */
         h1:hover::after {
             width: 100px;
         }
-
+    
         .container {
             display: flex;
             justify-content: center;
@@ -61,17 +53,7 @@
             overflow-x: auto;
             flex-wrap: nowrap;
         }
-        /* .student-block {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        } */
-        
-
+    
         .student-block {
             background: linear-gradient(145deg, #0078d4, #005a9e);
             color: white;
@@ -83,25 +65,23 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
         }
+    
         /* hover 효과 */
         .student-block:hover {
             transform: translateY(-10px);
             box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
         }
-        
+    
         .student-block img {
             width: 100%;
             height: auto;
             border-radius: 8px;
         }
-        /* .separator {
-            margin: 15px 0;
-            height: 1px;
-            background-color: #ddd;
-        } */
-        /* h1 {
-            text-align: center;
-        } */
+    
+        .student-block p {
+            color: #000; /* 진한 검정색 */
+        }
+    
         /* hover 시 밑줄 애니메이션 */
         .student-block:hover .student-name::after {
             width: 80%;
