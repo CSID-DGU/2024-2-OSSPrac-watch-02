@@ -2,16 +2,28 @@
 <html lang="kor">
 <body>
     <form action="/result" method="POST">
-        <p>Name <input type='text' name='name'></p>
+        <p><label style="font-weight: bold;">* Name <input type='text' name='name'></p>
         
-        <p>Student Number <input type='text' id='StudentNumber' name='StudentNumber' /></p>
-        
+        <p><label style="font-weight: bold;">* Student Number <input type='text' id='StudentNumber' name='StudentNumber' /></p>
+         
+        <p><label style="font-weight: bold;">* Major <input type='text' name='Major' /></p>
+
+        <p><label style="font-weight: bold;">
+            * Email 
+            <input type='text' name='EmailID' style="width: 150px;">
+            <span>@</span>
+            <select name="EmailDomain" style="width: 100px;">
+                <option value="">선택</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="naver.com">naver.com</option>
+                <option value="dgu.ac.kr">dgu.ac.kr</option>
+            </select>
+        </p>
+
         <p> Gender</p>
-            <input type="radio" name="Gender" value="Male" checked> Male
-            <input type="radio" name="Gender" value="Female"> Female <br>
- 
-        <p> Major <input type='text' name='Major' /></p>
-            
+        <input type="radio" name="Gender" value="Male" checked> Male
+        <input type="radio" name="Gender" value="Female"> Female <br>
+
         <p> Programming Languages</p>
         <label><input type = "checkbox" value = "Python"  name = "languages"/>Python</label>
         <label><input type = "checkbox" value = "Java" name = "languages"/>Java</label>

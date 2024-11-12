@@ -5,28 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Watch 팀 정보</title>
     <link href="https://fonts.googleapis.com/css2?family=JejuGothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* 기본 페이지 스타일 */
+        :root {
+            --accent-color: #f0f4f5;
+            --text-color: #f0f4f5;
+            --background-color: #3a3a61;
+        }
+
         body {
-            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, #e0eafc, #cfdef3);
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
             min-height: 100vh;
             margin: 0;
+            color: var(--text-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--background-color);
+            padding: 8px 12px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav_logo {
+            font-size: 24px;
+            color: var(--text-color);
+        }
+
+        .nav_logo i {
+            color: var(--accent-color);
+        }
+
+        .nav_logo span {
+            color: var(--accent-color);
+        }
+
+        .nav_menu {
+            display: flex;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .nav_menu li {
+            padding: 8px 12px;
+        }
+
+        .nav_menu li:hover {
+            color: var(--background-color);
+            background-color: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .nav_menu li a:hover {
+            color: var(--background-color);
+        }
+
+        .nav_icons {
+            display: flex;
+            color: #7dc0ff;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .nav_icons li {
+            padding: 8px 5px;
+        }
+
+        .navbar_toggleBtn {
+            display: none;
+            color: var(--text-color);
+            position: absolute;
+            right: 32px;
+            font-size: 24px;
+        }
+
+        .content {
+            margin-top: 180px; /* 네비게이션 바 높이만큼 여백 추가 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
 
         h1 {
             text-align: center;
             margin-bottom: 30px;
             font-size: 2.5rem;
-            color: #004aad;
+            color: #3a3a61;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
             position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #555;
         }
 
         /* 학생 정보 카드 스타일 */
@@ -48,7 +157,7 @@
             text-align: center;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            transition: max-height 0.5s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
             scroll-snap-align: start;
         }
@@ -58,13 +167,10 @@
             height: auto;
             border-radius: 50%;
         }
+
         .student-block:hover {
             transform: translateY(-10px);
             box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
-        }
-        /* hover 시 밑줄 애니메이션 */
-        .student-block:hover .student-name::after {
-            width: 80%;
         }
 
         /* 안내 부분 스타일 */
@@ -72,39 +178,85 @@
             margin-top: 20px;
             text-align: center;
         }
+
+        footer h5 {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        footer button {
+            background-color: #004aad;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        footer button:hover {
+            background-color: #003a8c;
+        }
     </style>
     <script>
         function openInputPage() {
             window.location.href = "/input";
         }
+
+        function openGithubPage() {
+            window.open('https://github.com/CSID-DGU/2024-2-OSSPrac-watch-02.git', 'contactPage', 'width=1800,height=1200');
+        }
+
+        function openGithubQR() {
+            window.location.href = '/image';
+        }
     </script>
 </head>
 <body>
-    <h1>Team Watch 입니다.</h1>
-    <h2>Watch 팀은 창의적인 디자인과 효율적인 시스템을 통해 최고의 결과를 목표로 하고 있습니다.</h2>
-    <h3> 팀 구성원 정보 입력 페이지 <button onclick="openInputPage()"> 이동 </button> </h3>
-
-    {% if result %}
-    <div class="container">
-        {% for name, student_number, gender, major, language in result %}
-            <div class="student-block">
-                <img src="https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac/main/webproject/pic_trulli.jpg" alt="Team Leader Photo">
-                <p><strong>이름:</strong> {{ name }}</p>
-                <p><strong>학번:</strong> {{ student_number }}</p>
-                <p><strong>성별:</strong> {{ gender }}</p>
-                <p><strong>전공:</strong> {{ major }}</p>
-                <p><strong>프로그래밍 언어:</strong> {{ language }}</p>
-            </div>
-        {% endfor %}
+    <!-- 네비게이션 바 -->
+    <div class="navbar">
+        <div class="nav_logo">
+            <i class="fas fa-house"></i> <span>Team Watch</span>
+        </div>
+        <ul class="nav_menu">
+            <li><a href="#" onclick="openInputPage()">팀 구성원 정보 입력 페이지 이동</a></li>
+            <li><a href="#" onclick="openGithubPage()">Github 페이지 바로가기</a></li>
+            <li><a href="#" onclick="openGithubQR()">팀 Github QR</a></li>
+        </ul>
+        <div class="navbar_toggleBtn">
+            <i class="fas fa-bars"></i>
+        </div>
     </div>
-    {% endif %}
 
-    <!-- 안내 부분 -->
-    <footer>
-        <h5>📞 안내: 
-            <button onclick="window.open('https://github.com/CSID-DGU/2024-2-OSSPrac-watch-02.git', 'contactPage', 'width=1800,height=1200')">팀 Github 바로가기</button>  
-            <button onclick="window.location.href='/image'">팀 Github QR</button>
-        </h5>
-    </footer>
+    <div class="content">
+        <h1>Team Watch</h1>
+        <h2>Team Watch는 통계학과 학생 두명, 산업시스템공학과 학생 두명으로 구성되어 있습니다. </h2>
+        <h3> 팀 구성원 정보 입력 페이지 <button onclick="openInputPage()"> 이동 </button> </h3>
+
+        {% if result %}
+        <div class="container">
+            {% for name, student_number, gender, major, language, email, phone, selected_picture in result %}
+                <div class="student-block">
+                    <img src="{{ selected_picture }}" alt="Student Profile Picture">
+                    <p><strong>이름:</strong> {{ name }}</p>
+                    <p><strong>학번:</strong> {{ student_number }}</p>
+                    <p><strong>성별:</strong> {{ gender }}</p>
+                    <p><strong>전공:</strong> {{ major }}</p>
+                    <p><strong>프로그래밍 언어:</strong> {{ language }}</p>
+                    <p><strong>이메일:</strong> {{ email }}</p>
+                    <p><strong>전화번호:</strong> {{ phone }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- 안내 부분 -->
+        <footer>
+            <h5>📞 안내: 
+                <button onclick="openGithubPage()">팀 Github 바로가기</button>  
+                <button onclick="openGithubQR()">팀 Github QR</button>
+            </h5>
+        </footer>
+    </div>
 </body>
 </html>
