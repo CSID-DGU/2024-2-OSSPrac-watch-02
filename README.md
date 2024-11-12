@@ -15,4 +15,4 @@
 
 ## main page
 
-![학생정보입력](2024-2-OSSPrac-watch-02/SubjectA2-3-2/static/main page.jpg)
+![학생정보입력](SubjectA2-3-2/static/main page.jpg)
