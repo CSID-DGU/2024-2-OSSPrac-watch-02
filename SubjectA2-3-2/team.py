@@ -27,10 +27,10 @@ def result():
 
     # 사진 파일 경로 설정
     picture_paths = {
-        'Picture1': "https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member1.png",
-        'Picture2': "https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member2.png",
-        'Picture3': "https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member3.png",
-        'Picture4': "https://raw.githubusercontents.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member4.png"
+        'Picture1': "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member1.png",
+        'Picture2': "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member2.png",
+        'Picture3': "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member3.png",
+        'Picture4': "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-watch-02/main/SubjectA2-3-2/images/member4.png"
     }
     
     # 각 학생의 선택된 사진 경로로 변환
