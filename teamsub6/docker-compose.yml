@@ -11,5 +11,8 @@ services: # 아래는 서비스 정의
          - "80:80"
 
    backapp:                   # service2의 명칭  
-      # 서비스 빌드를 위한 정의 내용
+      # 서비스 빌드를 위한 정의 내용docker exec -it prac12_c /bin/bash
       build: ./BackEnd
+      image: ${DOCKER_USR}/backapp
+      ports:
+      - "8080:8080"

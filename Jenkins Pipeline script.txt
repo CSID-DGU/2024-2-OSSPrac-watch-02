@@ -1,0 +1,62 @@
+// Pipeline Script for python application
+
+pipeline {
+    agent any  
+
+    triggers {
+            pollSCM('*/3 * * * *')
+    } 
+
+    environment {
+        DOCKER = credentials('dockerhub')
+        DOCKER_USR = "${DOCKER_USR}" // 사용자 이름
+        DOCKER_CREDS_PSW = "${DOCKER_PSW}" // 비밀번호
+
+    } 
+
+     stages {
+        stage('Prepare') {
+            steps {
+                git url: 'https://github.com/taekyungss/2024-2-OSSPrac-watch-02.git',
+                    branch: 'main',
+                    credentialsId: 'github'
+            }// git 명령어로 저장소의 main 브랜치에서 코드 클론
+        }
+
+        stage('Build') {
+            steps {
+                dir("teamsub6") { 
+                    sh "echo ${DOCKER_CREDS_PSW} | docker login -u ${DOCKER_USR} --password-stdin" //Docker 로그인
+                    // frontapp 빌드
+                    sh 'docker-compose build frontapp'
+                    // backapp 빌드
+                    sh 'docker-compose build backapp'
+                }
+            }
+        }
+
+        stage('Tag') {
+            steps {
+                script {
+                    // frontapp 이미지 태그
+                    sh "docker tag taekyungss/frontapp:latest ${DOCKER_USR}/frontapp:${BUILD_NUMBER}"
+                    // backapp 이미지 태그
+                    sh "docker tag taekyungss/backapp:latest ${DOCKER_USR}/backapp:${BUILD_NUMBER}"
+                }
+            }
+        }
+
+        stage('Push') {
+            steps {
+                script {
+                    // Docker Hub 로그인
+                    sh "echo $DOCKER_PSW | docker login -u $DOCKER_USR --password-stdin"
+                    // frontapp 이미지 푸시
+                    sh "docker push ${DOCKER_USR}/frontapp:${BUILD_NUMBER}"
+                    // backapp 이미지 푸시
+                    sh "docker push ${DOCKER_USR}/backapp:${BUILD_NUMBER}"
+                }
+            }
+        }
+    }
+}
