@@ -6,7 +6,7 @@ services: # 아래는 서비스 정의
    frontapp:                   # service1의 명칭  
       # 서비스 빌드를 위한 정의 내용
       build: ./FrontEnd/app 
-      image: seonyeoljeong/frontapp:latest
+      image: ${DOCKER_USR}/frontapp
       ports: 
          - "80:80"
 
