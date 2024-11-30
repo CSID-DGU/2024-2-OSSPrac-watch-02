@@ -17,7 +17,7 @@ pipeline {
      stages {
         stage('Prepare') {
             steps {
-                git url: 'https://github.com/taekyungss/2024-2-OSSPrac-watch-02.git',
+                git url: 'https://github.com/CSID-DGU/2024-2-OSSPrac-watch-02.git/',
                     branch: 'main',
                     credentialsId: 'github'
             }// git 명령어로 저장소의 main 브랜치에서 코드 클론
