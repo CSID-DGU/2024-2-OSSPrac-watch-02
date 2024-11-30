@@ -39,9 +39,9 @@ pipeline {
             steps {
                 script {
                     // frontapp 이미지 태그
-                    sh "docker tag taekyungss/frontapp:latest ${DOCKER_USR}/frontapp:${BUILD_NUMBER}"
+                    sh "docker tag seonyeoljeong/frontapp:latest ${DOCKER_USR}/frontapp:${BUILD_NUMBER}"
                     // backapp 이미지 태그
-                    sh "docker tag taekyungss/backapp:latest ${DOCKER_USR}/backapp:${BUILD_NUMBER}"
+                    sh "docker tag seonyeoljeong/backapp:latest ${DOCKER_USR}/backapp:${BUILD_NUMBER}"
                 }
             }
         }
